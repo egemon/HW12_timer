@@ -1,0 +1,16 @@
+.my-button-block{
+	width: 20%;
+	margin: 10px auto;
+
+
+}
+.my-time-block{
+	display: block;
+	position: relative;
+	margin: 10px auto;
+	width: 13%;
+}
+.badge,
+.btn {
+	margin: -0px auto;	
+}
