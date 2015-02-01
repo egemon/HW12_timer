@@ -1,4 +1,4 @@
-$((function(global){
+jQuery(function($){
 
 	var myTimerApp = {
 		$startButton : $('#start-button'),
@@ -84,10 +84,10 @@ $((function(global){
 	};
 
 
-	global.Timer = myTimerApp;
-	global.Timer.init();
+	window.Timer = myTimerApp;
+	window.Timer.init();
 
 	
-})(window))
+})
 
 
