@@ -13,12 +13,13 @@ $((function(global){
 		min : 0,
 		hour :0,
 
-		myTimer : 0,
-		isWorks : false, //if we delete this flag on muliple click on start begin fairy tales
+		myTimer : {},
+		isWorks : false, 
 
 		init : function() {
 			myTimerApp.bindEvents();	
 		},
+		
 		bindEvents : function() {
 			myTimerApp.bindStart();
 			myTimerApp.bindPause();
@@ -45,13 +46,19 @@ $((function(global){
 								myTimerApp.min = 0;
 								myTimerApp.hour++;
 							};
-							
-						myTimerApp.$secSpan.html(myTimerApp.sec);
-						myTimerApp.$minSpan.html(myTimerApp.min); 
-						myTimerApp.$hourSpan.html(myTimerApp.hour);
+
+						myTimerApp.renderTimer();	
+						
 				},1000 );
 			});
 		},
+
+		renderTimer : function () {
+			myTimerApp.$secSpan.html(myTimerApp.sec);
+			myTimerApp.$minSpan.html(myTimerApp.min); 
+			myTimerApp.$hourSpan.html(myTimerApp.hour);
+		},
+
 		bindPause : function() {
 			myTimerApp.$pauseButton.click(function() {
 				myTimerApp.isWorks = false;
@@ -63,14 +70,13 @@ $((function(global){
 			myTimerApp.$stopButton.click(function() {
 				myTimerApp.isWorks = false;
 				window.clearInterval(myTimerApp.myTimer);
-
-				myTimerApp.$secSpan.html(0);
-				myTimerApp.$minSpan.html(0); 
-				myTimerApp.$hourSpan.html(0);
-
+				
 				myTimerApp.sec = 0;
 				myTimerApp.min = 0;
 				myTimerApp.hour = 0;
+
+				myTimerApp.renderTimer();
+
 			});
 			
 		}
@@ -78,8 +84,8 @@ $((function(global){
 	};
 
 
-	global.createTestModule = myTimerApp;
-	global.createTestModule.init();
+	global.Timer = myTimerApp;
+	global.Timer.init();
 
 	
 })(window))
